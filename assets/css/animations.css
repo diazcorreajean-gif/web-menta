@@ -232,7 +232,13 @@
     height: 56px;
     border-color: #a8d5c2;
 }
-
+.no-cursor * {
+    cursor: auto !important;
+}
+.no-cursor .cursor-dot,
+.no-cursor .cursor-ring {
+    display: none !important;
+}
 /* ── LÍNEA SEPARADORA ANIMADA ── */
 .servicios__nota::before,
 .diferencial__tag::after {

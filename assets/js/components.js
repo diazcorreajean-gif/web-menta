@@ -28,6 +28,40 @@ function corregirRutas(id) {
     });
 }
 
+function initHamburguesa() {
+    const hamburguesa = document.querySelector('.nav-hamburguesa');
+    const navLinks    = document.querySelector('.nav-links');
+
+    if (!hamburguesa || !navLinks) return;
+
+    const overlay = document.createElement('div');
+    overlay.classList.add('nav-overlay');
+    document.body.appendChild(overlay);
+
+    hamburguesa.addEventListener('click', () => {
+        hamburguesa.classList.toggle('activo');
+        navLinks.classList.toggle('activo');
+        overlay.classList.toggle('activo');
+        document.body.style.overflow = navLinks.classList.contains('activo') ? 'hidden' : '';
+    });
+
+    overlay.addEventListener('click', () => {
+        hamburguesa.classList.remove('activo');
+        navLinks.classList.remove('activo');
+        overlay.classList.remove('activo');
+        document.body.style.overflow = '';
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            hamburguesa.classList.remove('activo');
+            navLinks.classList.remove('activo');
+            overlay.classList.remove('activo');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
 function abrirModal(ruta, titulo) {
     document.getElementById('modal-iframe').src = ruta;
     document.getElementById('modal-titulo').textContent = titulo;
@@ -47,6 +81,13 @@ function cerrarModalFuera(e) {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
 
-cargarComponente('header', 'components/header.html', () => corregirRutas('header'));
+// Deshabilitar cursor personalizado en móvil/táctil
+const esTactil = window.matchMedia('(hover: none)').matches;
+if (esTactil) document.documentElement.classList.add('no-cursor');
+
+cargarComponente('header', 'components/header.html', () => {
+    corregirRutas('header');
+    initHamburguesa();
+});
 cargarComponente('footer', 'components/footer.html', () => corregirRutas('footer'));
 cargarComponente('whatsapp', 'components/whatsapp-btn.html');

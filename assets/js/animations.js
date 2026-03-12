@@ -1,10 +1,8 @@
 /* ════════════════════════════════
     ANIMATIONS.JS — MENTA
-    Añadir antes del cierre </body>
-    después de components.js
    ════════════════════════════════ */
 
-   document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
     // ════════════════════════════════
     // 1. NAVBAR — cambia al hacer scroll
@@ -41,48 +39,51 @@
 
 
     // ════════════════════════════════
-    // 3. CURSOR PERSONALIZADO
+    // 3. CURSOR PERSONALIZADO — solo en desktop
     // ════════════════════════════════
-    const dot  = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.className  = 'cursor-dot';
-    ring.className = 'cursor-ring';
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
+    if (!document.documentElement.classList.contains('no-cursor')) {
 
-    let mouseX = 0, mouseY = 0;
-    let ringX  = 0, ringY  = 0;
+        const dot  = document.createElement('div');
+        const ring = document.createElement('div');
+        dot.className  = 'cursor-dot';
+        ring.className = 'cursor-ring';
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
 
-    window.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        dot.style.left = mouseX + 'px';
-        dot.style.top  = mouseY + 'px';
-    });
+        let mouseX = 0, mouseY = 0;
+        let ringX  = 0, ringY  = 0;
 
-    function animateCursor() {
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-        ring.style.left = ringX + 'px';
-        ring.style.top  = ringY + 'px';
-        requestAnimationFrame(animateCursor);
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + 'px';
+            dot.style.top  = mouseY + 'px';
+        });
+
+        function animateCursor() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.left = ringX + 'px';
+            ring.style.top  = ringY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
+        interactivos.forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+        });
+
+        document.addEventListener('mouseleave', () => {
+            dot.style.opacity  = '0';
+            ring.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            dot.style.opacity  = '1';
+            ring.style.opacity = '1';
+        });
     }
-    animateCursor();
-
-    const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
-    interactivos.forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-    });
-
-    document.addEventListener('mouseleave', () => {
-        dot.style.opacity  = '0';
-        ring.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-        dot.style.opacity  = '1';
-        ring.style.opacity = '1';
-    });
 
 
     // ════════════════════════════════
@@ -97,42 +98,5 @@
             }
         });
     });
-
-
-    // ════════════════════════════════
-    // 5. HAMBURGUESA
-    // ════════════════════════════════
-    const hamburguesa = document.querySelector('.nav-hamburguesa');
-    const navLinks    = document.querySelector('.nav-links');
-
-    if (hamburguesa && navLinks) {
-        const overlay = document.createElement('div');
-        overlay.classList.add('nav-overlay');
-        document.body.appendChild(overlay);
-
-        hamburguesa.addEventListener('click', () => {
-            hamburguesa.classList.toggle('activo');
-            navLinks.classList.toggle('activo');
-            overlay.classList.toggle('activo');
-            document.body.style.overflow = navLinks.classList.contains('activo') ? 'hidden' : '';
-        });
-
-        overlay.addEventListener('click', () => {
-            hamburguesa.classList.remove('activo');
-            navLinks.classList.remove('activo');
-            overlay.classList.remove('activo');
-            document.body.style.overflow = '';
-        });
-
-        // Cerrar al hacer click en un link
-        navLinks.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => {
-                hamburguesa.classList.remove('activo');
-                navLinks.classList.remove('activo');
-                overlay.classList.remove('activo');
-                document.body.style.overflow = '';
-            });
-        });
-    }
 
 });
