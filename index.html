@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menta | Soluciones Digitales</title>
+    <link rel="shortcut icon" href="assets/img/logo_cortado.png" type="image/x-icon">
+    <title>Menta | Diseño Web Profesional desde 200€</title>
+    <meta name="description" content="Diseñamos webs profesionales para negocios locales desde 200€. Landing pages, webs corporativas y tiendas online. Entrega en 7 días.">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/hero.css">
     <link rel="stylesheet" href="assets/css/servicios.css">
     <link rel="stylesheet" href="assets/css/proceso.css">
     <link rel="stylesheet" href="assets/css/diferencial.css">
     <link rel="stylesheet" href="assets/css/contacto.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body>
 
@@ -25,20 +30,20 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Diseñamos webs que convierten visitantes en clientes</h1>
-            <p>Diseñamos webs rápidas y optimizadas para convertir visitantes en <span class="text-subtitle">clientes</span></p>
+            <p>Diseñamos webs rápidas y optimizadas para negocios que quieren <span class="text-subtitle">modernizarse</span></p>
             <div class="hero-btns">
                 <a href="#servicios" class="btn-primary">Ver servicios</a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="assets/img/image.png" alt="Diseño web Menta">
+            <img src="assets/img/image.webp" alt="Diseño web Menta" width="550" height="400">
         </div>
     </section>
 
     <!-- SERVICIOS -->
     <section class="servicios" id="servicios">
 
-        <div class="servicios__header">
+        <div class="servicios__header reveal">
             <div>
                 <p class="servicios__tag">Servicios</p>
                 <h2 class="servicios__titulo">Lo que puedo<br><span>hacer por ti</span></h2>
@@ -50,7 +55,7 @@
 
         <div class="servicios__grid">
 
-            <div class="card">
+            <div class="card reveal reveal-delay-1">
                 <p class="card__numero">01</p>
                 <svg class="card__icono" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="4" y="8" width="32" height="24" rx="2" stroke="#a8d5c2" stroke-width="1.5"/>
@@ -69,7 +74,7 @@
                 <span class="card__precio">Desde 200 €</span>
             </div>
 
-            <div class="card card--destacada">
+            <div class="card card--destacada reveal reveal-delay-2">
                 <p class="card__numero">02</p>
                 <svg class="card__icono" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="4" y="4" width="32" height="32" rx="2" stroke="#a8d5c2" stroke-width="1.5"/>
@@ -89,7 +94,7 @@
                 <span class="card__precio">Desde 500 €</span>
             </div>
 
-            <div class="card">
+            <div class="card reveal reveal-delay-3">
                 <p class="card__numero">03</p>
                 <svg class="card__icono" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="4" y="6" width="22" height="28" rx="2" stroke="#a8d5c2" stroke-width="1.5"/>
@@ -108,13 +113,17 @@
                     <li>Mejora de velocidad</li>
                     <li>Presupuesto a medida</li>
                 </ul>
-                <span class="card__precio">Consultar precio</span>
+                <span>
+                        <a class="card__precio" href="https://wa.me/573219317510?text=Hola,%20me%20gustaria%20consultar%20el%20precio%20de%20mi%20mejora%20web">
+                            Consultar precio
+                        </a>
+                </span>
             </div>
 
         </div>
 
-        <p class="servicios__nota">
-            Todos los proyectos incluyen hosting y dominio el primer año sin coste adicional.
+        <p class="servicios__nota reveal">
+            Todos los proyectos incluyen hosting y dominio .com el primer año sin coste adicional.
         </p>
 
     </section>
@@ -122,14 +131,14 @@
     <!-- PROCESO -->
     <section class="proceso" id="proceso">
 
-        <div class="proceso__header">
+        <div class="proceso__header reveal">
             <p class="proceso__tag">Cómo trabajo</p>
             <h2 class="proceso__titulo">Simple, rápido<br><span>y sin sorpresas</span></h2>
         </div>
 
         <div class="proceso__pasos">
 
-            <div class="paso">
+            <div class="paso reveal reveal-delay-1">
                 <span class="paso__numero">01</span>
                 <svg class="paso__icono" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="16" cy="16" r="12" stroke="#a8d5c2" stroke-width="1.5"/>
@@ -140,7 +149,7 @@
                 <p class="paso__desc">Hablamos de tu negocio, qué necesitas y qué quieres transmitir. Sin tecnicismos, sin formularios raros.</p>
             </div>
 
-            <div class="paso">
+            <div class="paso reveal reveal-delay-2">
                 <span class="paso__numero">02</span>
                 <svg class="paso__icono" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="4" y="4" width="24" height="24" rx="2" stroke="#a8d5c2" stroke-width="1.5"/>
@@ -152,7 +161,7 @@
                 <p class="paso__desc">Creo tu web con todo lo acordado. Te muestro avances para que siempre sepas cómo va quedando.</p>
             </div>
 
-            <div class="paso">
+            <div class="paso reveal reveal-delay-3">
                 <span class="paso__numero">03</span>
                 <svg class="paso__icono" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 16l7 7L26 9" stroke="#a8d5c2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -161,7 +170,7 @@
                 <p class="paso__desc">Te entrego una versión para que la revises. Hacemos los ajustes que necesites hasta que estés contento.</p>
             </div>
 
-            <div class="paso">
+            <div class="paso reveal reveal-delay-4">
                 <span class="paso__numero">04</span>
                 <svg class="paso__icono" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="16" cy="16" r="12" stroke="#a8d5c2" stroke-width="1.5"/>
@@ -174,33 +183,31 @@
         </div>
 
     </section>
-    <!-- AÑADIR EN <head> -->
-<!-- <link rel="stylesheet" href="assets/css/diferencial.css"> -->
 
-<!-- SECCIÓN DIFERENCIAL — pegar después de proceso -->
+    <!-- DIFERENCIAL -->
     <section class="diferencial" id="diferencial">
         <div class="diferencial__inner">
 
-            <div class="diferencial__header">
+            <div class="diferencial__header reveal">
                 <p class="diferencial__tag">Por qué elegirme</p>
                 <h2 class="diferencial__titulo">Lo que me hace<br><span>diferente</span></h2>
             </div>
 
             <div class="diferencial__grid">
 
-                <div class="diferencial__item">
+                <div class="diferencial__item reveal reveal-delay-1">
                     <p class="diferencial__numero">01</p>
                     <h3 class="diferencial__nombre">Precio accesible</h3>
                     <p class="diferencial__desc">Sin intermediarios ni estructuras de agencia grande. Trabajas directamente conmigo, lo que se traduce en <strong>precios justos</strong> sin sacrificar calidad.</p>
                 </div>
 
-                <div class="diferencial__item">
+                <div class="diferencial__item reveal reveal-delay-2">
                     <p class="diferencial__numero">02</p>
                     <h3 class="diferencial__nombre">Trato cercano</h3>
                     <p class="diferencial__desc">No eres un ticket de soporte. Hablo contigo directamente, te explico cada decisión y <strong>siempre sabes cómo va tu proyecto</strong>.</p>
                 </div>
 
-                <div class="diferencial__item">
+                <div class="diferencial__item reveal reveal-delay-3">
                     <p class="diferencial__numero">03</p>
                     <h3 class="diferencial__nombre">Entrega rápida</h3>
                     <p class="diferencial__desc">Sin colas ni esperas eternas. Tu web lista <strong>en días, no en meses</strong>. Porque tu negocio no puede esperar.</p>
@@ -210,16 +217,21 @@
 
         </div>
     </section>
+
+
+
+
+    <!-- CONTACTO -->
     <section class="contacto" id="contacto">
 
-        <p class="contacto__tag">Contacto</p>
-        <h2 class="contacto__titulo">¿Hablamos de<br><span>tu proyecto?</span></h2>
-        <p class="contacto__subtitulo">
+        <p class="contacto__tag reveal">Contacto</p>
+        <h2 class="contacto__titulo reveal">¿Hablamos de<br><span>tu proyecto?</span></h2>
+        <p class="contacto__subtitulo reveal">
             Cuéntame qué necesitas y te respondo en menos de 24 horas con una propuesta sin compromiso.
         </p>
 
-        <a href="https://wa.me/573219317510?text=Hola,%20me%20interesa%20una%20web" 
-            class="btn-whatsapp" 
+        <a href="       "
+            class="btn-whatsapp reveal"
             target="_blank">
             <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -227,12 +239,14 @@
             Escríbeme por WhatsApp
         </a>
 
-        <p class="contacto__nota">Respondo en menos de 24h · Sin compromiso</p>
+        <p class="contacto__nota reveal">Respondo en menos de 24h · Sin compromiso</p>
 
     </section>
+
     <div id="footer"></div>
     <div id="whatsapp"></div>
 
     <script src="assets/js/components.js"></script>
+    <script src="assets/js/animations.js"></script>
 </body>
 </html>

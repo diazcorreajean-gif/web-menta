@@ -1,0 +1,106 @@
+/* ════════════════════════════════
+    ANIMATIONS.JS — MENTA
+    Añadir antes del cierre </body>
+    después de components.js
+   ════════════════════════════════ */
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+    // ════════════════════════════════
+    // 1. NAVBAR — cambia al hacer scroll
+    // ════════════════════════════════
+    const nav = document.querySelector('.menta-nav');
+
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+
+
+    // ════════════════════════════════
+    // 2. SCROLL REVEAL — Intersection Observer
+    // Añade clase .reveal a cualquier elemento
+    // que quieras animar al entrar en pantalla
+    // ════════════════════════════════
+    const revealEls = document.querySelectorAll('.reveal');
+
+    if (revealEls.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // solo anima una vez
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealEls.forEach(el => observer.observe(el));
+    }
+
+
+    // ════════════════════════════════
+    // 3. CURSOR PERSONALIZADO
+    // ════════════════════════════════
+    const dot  = document.createElement('div');
+    const ring = document.createElement('div');
+    dot.className  = 'cursor-dot';
+    ring.className = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+
+    let mouseX = 0, mouseY = 0;
+    let ringX  = 0, ringY  = 0;
+
+    window.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top  = mouseY + 'px';
+    });
+
+    // Ring sigue con suavidad (lerp)
+    function animateCursor() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        ring.style.left = ringX + 'px';
+        ring.style.top  = ringY + 'px';
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Hover en elementos interactivos
+    const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
+    interactivos.forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+
+    // Ocultar cursor al salir de la ventana
+    document.addEventListener('mouseleave', () => {
+        dot.style.opacity  = '0';
+        ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        dot.style.opacity  = '1';
+        ring.style.opacity = '1';
+    });
+
+
+    // ════════════════════════════════
+    // 4. SMOOTH SCROLL — links del navbar
+    // ════════════════════════════════
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+});

@@ -1,0 +1,160 @@
+/* ── FOOTER ── */
+.footer {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 72px 5% 0;
+}
+
+.footer__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid #222222;
+}
+
+/* ── COLUMNA MARCA ── */
+.footer__marca {
+    max-width: 320px;
+}
+
+.footer__logo {
+    margin-bottom: 20px;
+}
+
+.footer__logo img {
+    height: 36px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.footer__desc {
+    font-size: 14px;
+    color: #888888;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.footer__social {
+    display: flex;
+    gap: 12px;
+}
+
+.footer__social a {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    color: #888888;
+}
+
+.footer__social a:hover {
+    border-color: #a8d5c2;
+    background-color: rgba(168, 213, 194, 0.08);
+}
+.footer__social svg path{
+    fill:currentColor !important;
+}
+.footer__social svg{
+    width:20px;
+    height:20px;
+    display:block;
+    }
+
+.footer__social a:hover svg {
+    fill: #a8d5c2;
+}
+
+/* ── COLUMNAS LINKS ── */
+.footer__col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #a8d5c2;
+    margin-bottom: 24px;
+}
+
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer__col ul li a {
+    font-size: 14px;
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer__col ul li a:hover {
+    color: #ffffff;
+}
+
+/* ── BOTTOM BAR ── */
+.footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.footer__copy {
+    font-size: 13px;
+    color: #444444;
+}
+
+.footer__copy span {
+    color: #a8d5c2;
+}
+
+.footer__badge {
+    font-size: 12px;
+    color: #444444;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer__badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #a8d5c2;
+    border-radius: 50%;
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .footer__top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
