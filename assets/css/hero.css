@@ -91,3 +91,8 @@
     border-radius: 4px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.06);
 }
+@media (max-width: 768px) {
+    .hero-image {
+        display: none;
+    }
+}

@@ -4,7 +4,7 @@
     después de components.js
    ════════════════════════════════ */
 
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
 
     // ════════════════════════════════
     // 1. NAVBAR — cambia al hacer scroll
@@ -20,8 +20,6 @@
 
     // ════════════════════════════════
     // 2. SCROLL REVEAL — Intersection Observer
-    // Añade clase .reveal a cualquier elemento
-    // que quieras animar al entrar en pantalla
     // ════════════════════════════════
     const revealEls = document.querySelectorAll('.reveal');
 
@@ -30,7 +28,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // solo anima una vez
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
@@ -62,7 +60,6 @@
         dot.style.top  = mouseY + 'px';
     });
 
-    // Ring sigue con suavidad (lerp)
     function animateCursor() {
         ringX += (mouseX - ringX) * 0.12;
         ringY += (mouseY - ringY) * 0.12;
@@ -72,14 +69,12 @@
     }
     animateCursor();
 
-    // Hover en elementos interactivos
     const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
     interactivos.forEach(el => {
         el.addEventListener('mouseenter', () => ring.classList.add('hover'));
         el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
     });
 
-    // Ocultar cursor al salir de la ventana
     document.addEventListener('mouseleave', () => {
         dot.style.opacity  = '0';
         ring.style.opacity = '0';
@@ -91,7 +86,7 @@
 
 
     // ════════════════════════════════
-    // 4. SMOOTH SCROLL — links del navbar
+    // 4. SMOOTH SCROLL
     // ════════════════════════════════
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', e => {
@@ -102,5 +97,42 @@
             }
         });
     });
+
+
+    // ════════════════════════════════
+    // 5. HAMBURGUESA
+    // ════════════════════════════════
+    const hamburguesa = document.querySelector('.nav-hamburguesa');
+    const navLinks    = document.querySelector('.nav-links');
+
+    if (hamburguesa && navLinks) {
+        const overlay = document.createElement('div');
+        overlay.classList.add('nav-overlay');
+        document.body.appendChild(overlay);
+
+        hamburguesa.addEventListener('click', () => {
+            hamburguesa.classList.toggle('activo');
+            navLinks.classList.toggle('activo');
+            overlay.classList.toggle('activo');
+            document.body.style.overflow = navLinks.classList.contains('activo') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', () => {
+            hamburguesa.classList.remove('activo');
+            navLinks.classList.remove('activo');
+            overlay.classList.remove('activo');
+            document.body.style.overflow = '';
+        });
+
+        // Cerrar al hacer click en un link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                hamburguesa.classList.remove('activo');
+                navLinks.classList.remove('activo');
+                overlay.classList.remove('activo');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 
 });
