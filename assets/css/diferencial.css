@@ -1,0 +1,88 @@
+/* ── POR QUÉ ELEGIRME ── */
+.diferencial {
+    padding: 100px 5%;
+    background-color: #1a1a1a;
+}
+
+.diferencial__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.diferencial__header {
+    margin-bottom: 72px;
+}
+
+.diferencial__tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #a8d5c2;
+    margin-bottom: 16px;
+}
+
+.diferencial__titulo {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.diferencial__titulo span {
+    font-weight: 700;
+}
+
+/* ── GRID ── */
+.diferencial__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background-color: #2a2a2a;
+}
+
+.diferencial__item {
+    background-color: #1a1a1a;
+    padding: 48px 36px;
+    transition: background-color 0.3s ease;
+}
+
+.diferencial__item:hover {
+    background-color: #222222;
+}
+
+.diferencial__numero {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #a8d5c2;
+    margin-bottom: 28px;
+}
+
+.diferencial__nombre {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.diferencial__desc {
+    font-size: 14px;
+    color: #888888;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.diferencial__desc strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .diferencial__grid {
+        grid-template-columns: 1fr;
+    }
+}
