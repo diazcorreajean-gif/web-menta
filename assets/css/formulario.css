@@ -172,7 +172,17 @@
 .formulario__btn:hover svg {
     transform: translateX(4px);
 }
+.formulario__grupo input.error,
+.formulario__grupo select.error,
+.formulario__grupo textarea.error {
+    border-color: #e24b4a;
+    background: #fff8f8;
+}
 
+.formulario__grupo input.error::placeholder,
+.formulario__grupo textarea.error::placeholder {
+    color: #e24b4a;
+}
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
     .formulario__inner {

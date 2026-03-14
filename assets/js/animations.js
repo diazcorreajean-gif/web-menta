@@ -100,3 +100,29 @@
     });
 
 });
+    // ── VALIDACIÓN FORMULARIO ──
+    const form = document.querySelector('.formulario__form');
+    if (form) {
+        const inputs = form.querySelectorAll('input, select, textarea');
+        
+        inputs.forEach(input => {
+            input.addEventListener('invalid', (e) => {
+                e.preventDefault();
+                input.classList.add('error');
+            });
+            input.addEventListener('input', () => {
+                input.classList.remove('error');
+            });
+        });
+    
+        form.addEventListener('submit', (e) => {
+            let valido = true;
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    input.classList.add('error');
+                    valido = false;
+                }
+            });
+            if (!valido) e.preventDefault();
+        });
+    }
