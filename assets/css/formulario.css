@@ -1,0 +1,191 @@
+/* ── HERO CONTACTO ── */
+.contacto-hero {
+    padding: 160px 5% 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contacto-hero__tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #a8d5c2;
+    margin-bottom: 16px;
+}
+
+.contacto-hero__titulo {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300;
+    color: #1a1a1a;
+    line-height: 1.05;
+    margin-bottom: 24px;
+}
+
+.contacto-hero__titulo span { font-weight: 700; }
+
+.contacto-hero__desc {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 560px;
+}
+
+/* ── FORMULARIO ── */
+.formulario {
+    padding: 80px 5%;
+}
+
+.formulario__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* ── INFO LATERAL ── */
+.formulario__info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.formulario__dato {
+    border-top: 1px solid #e8e8e8;
+    padding-top: 24px;
+}
+
+.formulario__dato p:first-child {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #a8d5c2;
+    margin-bottom: 8px;
+}
+
+.formulario__dato p:last-child {
+    font-size: 14px;
+    color: #1a1a1a;
+}
+
+/* ── FORM ── */
+.formulario__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formulario__fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.formulario__grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formulario__grupo label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+.formulario__grupo input,
+.formulario__grupo select,
+.formulario__grupo textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+    outline: none;
+    appearance: none;
+}
+
+.formulario__grupo input::placeholder,
+.formulario__grupo textarea::placeholder {
+    color: #bbb;
+}
+
+.formulario__grupo input:focus,
+.formulario__grupo select:focus,
+.formulario__grupo textarea:focus {
+    border-color: #a8d5c2;
+}
+
+.formulario__grupo select {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.formulario__grupo textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* ── BOTÓN ── */
+.formulario__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    padding: 18px 36px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
+}
+
+.formulario__btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.formulario__btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+.formulario__btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .formulario__inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .formulario__fila {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario__btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
