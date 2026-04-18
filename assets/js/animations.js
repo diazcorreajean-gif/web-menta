@@ -2,7 +2,7 @@
     ANIMATIONS.JS — MENTA
    ════════════════════════════════ */
 
-   document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
     // ════════════════════════════════
     // 1. NAVBAR — cambia al hacer scroll
@@ -41,49 +41,65 @@
     // ════════════════════════════════
     // 3. CURSOR PERSONALIZADO — solo en desktop
     // ════════════════════════════════
-    if (!document.documentElement.classList.contains('no-cursor')) {
+    // ════════════════════════════════
+// 3. CURSOR PERSONALIZADO — solo en desktop
+// ════════════════════════════════
+if (!document.documentElement.classList.contains('no-cursor')) {
 
-        const dot  = document.createElement('div');
-        const ring = document.createElement('div');
-        dot.className  = 'cursor-dot';
-        ring.className = 'cursor-ring';
-        document.body.appendChild(dot);
-        document.body.appendChild(ring);
+    const dot  = document.createElement('div');
+    const ring = document.createElement('div');
+    dot.className  = 'cursor-dot';
+    ring.className = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
 
-        let mouseX = 0, mouseY = 0;
-        let ringX  = 0, ringY  = 0;
+    let mouseX = 0, mouseY = 0;
+    let ringX  = 0, ringY  = 0;
 
-        window.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            dot.style.left = mouseX + 'px';
-            dot.style.top  = mouseY + 'px';
-        });
+    window.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top  = mouseY + 'px';
+    });
 
-        function animateCursor() {
-            ringX += (mouseX - ringX) * 0.12;
-            ringY += (mouseY - ringY) * 0.12;
-            ring.style.left = ringX + 'px';
-            ring.style.top  = ringY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
-        interactivos.forEach(el => {
-            el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-            el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-        });
-
-        document.addEventListener('mouseleave', () => {
-            dot.style.opacity  = '0';
-            ring.style.opacity = '0';
-        });
-        document.addEventListener('mouseenter', () => {
-            dot.style.opacity  = '1';
-            ring.style.opacity = '1';
-        });
+    function animateCursor() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        ring.style.left = ringX + 'px';
+        ring.style.top  = ringY + 'px';
+        requestAnimationFrame(animateCursor);
     }
+    animateCursor();
+
+    const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
+    interactivos.forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+
+    // ── Cursor claro sobre elementos oscuros ──
+    const elementosOscuros = document.querySelectorAll('.plan-business, .menta-nav.scrolled, .footer, .diferencial, .faq, .numeros');
+    elementosOscuros.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            dot.classList.add('cursor-light');
+            ring.classList.add('cursor-light');
+        });
+        el.addEventListener('mouseleave', () => {
+            dot.classList.remove('cursor-light');
+            ring.classList.remove('cursor-light');
+        });
+    });
+
+    document.addEventListener('mouseleave', () => {
+        dot.style.opacity  = '0';
+        ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        dot.style.opacity  = '1';
+        ring.style.opacity = '1';
+    });
+}
 
 
     // ════════════════════════════════

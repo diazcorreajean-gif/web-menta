@@ -232,6 +232,13 @@
     height: 56px;
     border-color: #a8d5c2;
 }
+.cursor-dot.cursor-light {
+    background-color: #00ff95;
+}
+
+.cursor-ring.cursor-light {
+    border-color: #ffffff;
+}
 .no-cursor * {
     cursor: auto !important;
 }
