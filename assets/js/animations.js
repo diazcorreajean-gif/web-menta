@@ -2,7 +2,7 @@
     ANIMATIONS.JS — MENTA
    ════════════════════════════════ */
 
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
 
     // ════════════════════════════════
     // 1. NAVBAR — cambia al hacer scroll
@@ -99,30 +99,66 @@
         });
     });
 
-});
-    // ── VALIDACIÓN FORMULARIO ──
-    const form = document.querySelector('.formulario__form');
-    if (form) {
-        const inputs = form.querySelectorAll('input, select, textarea');
-        
-        inputs.forEach(input => {
-            input.addEventListener('invalid', (e) => {
-                e.preventDefault();
-                input.classList.add('error');
-            });
-            input.addEventListener('input', () => {
-                input.classList.remove('error');
-            });
+
+    // ════════════════════════════════
+    // 5. PLANES — animación de tarjetas y filas
+    // ════════════════════════════════
+    const planesObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                planesObserver.unobserve(entry.target);
+            }
         });
-    
-        form.addEventListener('submit', (e) => {
-            let valido = true;
-            inputs.forEach(input => {
-                if (!input.checkValidity()) {
-                    input.classList.add('error');
-                    valido = false;
-                }
-            });
-            if (!valido) e.preventDefault();
-        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.plan-card').forEach((el, i) => {
+        el.style.transitionDelay = `${i * 150}ms`;
+        planesObserver.observe(el);
+    });
+
+    document.querySelectorAll('.servicios-contenido').forEach((el, i) => {
+        el.style.transitionDelay = `${i * 40}ms`;
+        planesObserver.observe(el);
+    });
+
+    // Efecto shimmer continuo en Web Corporativa
+    const business = document.querySelector('.plan-business');
+    if (business) {
+        setInterval(() => {
+            business.classList.add('shimmer');
+            setTimeout(() => business.classList.remove('shimmer'), 1000);
+        }, 3000);
     }
+
+});
+
+
+// ════════════════════════════════
+// VALIDACIÓN FORMULARIO
+// ════════════════════════════════
+const form = document.querySelector('.formulario__form');
+if (form) {
+    const inputs = form.querySelectorAll('input, select, textarea');
+
+    inputs.forEach(input => {
+        input.addEventListener('invalid', (e) => {
+            e.preventDefault();
+            input.classList.add('error');
+        });
+        input.addEventListener('input', () => {
+            input.classList.remove('error');
+        });
+    });
+
+    form.addEventListener('submit', (e) => {
+        let valido = true;
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                input.classList.add('error');
+                valido = false;
+            }
+        });
+        if (!valido) e.preventDefault();
+    });
+}

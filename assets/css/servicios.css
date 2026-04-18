@@ -1,188 +1,243 @@
-/* ── SERVICIOS ── */
-.servicios {
+.planes-section {
     padding: 100px 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.servicios__header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 64px;
-    gap: 40px;
-}
-
-.servicios__tag {
+.planes-label {
+    display: block;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #a8d5c2;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
-.servicios__titulo {
+.planes-titulo {
     font-size: clamp(32px, 4vw, 52px);
     font-weight: 300;
     color: #1a1a1a;
     line-height: 1.1;
-    margin: 0;
+    margin: 0 0 16px 0;
 }
 
-.servicios__titulo span {
+.planes-titulo span {
     font-weight: 700;
 }
 
-.servicios__subtitulo {
+.planes-descripcion {
     font-size: 15px;
-    color: #666666;
-    line-height: 1.7;
-    max-width: 320px;
-    flex-shrink: 0;
-    font-weight: 400;
+    color: #555;
+    margin-bottom: 60px;
 }
 
-/* ── GRID ── */
-.servicios__grid {
+.planes-descripcion span {
+    color: #000000;
+    padding-bottom: 4px;
+    border-bottom: solid 2px #000000;
+}
+
+/* ── Grid principal ── */
+.planes {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background-color: #e8e8e8;
+    grid-template-columns: 500px 150px 150px;
+    align-items: end;
 }
 
-.card {
-    background-color: #f5f5f5;
-    padding: 48px 36px;
-    transition: background-color 0.3s ease;
-    cursor: default;
+/* ── Tarjetas de plan ── */
+.plan-card {
+    border-left: 2px solid #a8d5c2;
+    text-align: center;
+    padding: 16px 10px 12px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.card:hover {
-    background-color: #ffffff;
+.plan-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.card__numero {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    color: #a8d5c2;
-    margin-bottom: 28px;
-    text-decoration: none;
-}
-
-.card__icono {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 20px;
-}
-
-.card__nombre {
-    font-size: 20px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 12px;
-    line-height: 1.2;
-}
-
-.card__desc {
-    font-size: 14px;
-    color: #666666;
-    line-height: 1.7;
-    margin-bottom: 28px;
-    font-weight: 400;
-}
-
-.card__lista {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 36px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.card__lista li {
-    font-size: 13px;
-    font-weight: 500;
-    color: #1a1a1a;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.card__lista li::before {
-    content: '';
-    width: 16px;
-    height: 1px;
-    background-color: #a8d5c2;
-    flex-shrink: 0;
-}
-
-.card__precio {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: #1a1a1a;
-    padding: 10px 18px;
-    border: 1px solid #d0d0d0;
+.plan-card__badge {
     display: inline-block;
-    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: #1a1a1a;
+    color: #a8d5c2;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-bottom: 8px;
 }
 
-/* ── CARD DESTACADA ── */
-.card--destacada {
-    background-color: #1a1a1a;
+.plan-card__nombre {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.card--destacada:hover {
-    background-color: #222222;
+.plan-card__precio {
+    font-size: 15px;
+    font-weight: 700;
+    color: #a8d5c2;
+    margin: 0;
 }
 
-.card--destacada .card__nombre,
-.card--destacada .card__lista li {
+.plan-card__precio span {
+    font-size: 10px;
+    font-weight: 400;
+    color: #888;
+}
+
+/* Landing: simple */
+.plan-landing {
+    background: #fafafa;
+}
+
+/* Web Corporativa: destacada */
+.plan-business {
+    background: #1a1a1a;
+    border-left-color: #1a1a1a;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.plan-business .plan-card__nombre {
     color: #ffffff;
 }
 
-.card--destacada .card__desc {
-    color: #888888;
-}
-
-.card--destacada .card__precio {
+.plan-business .plan-card__precio {
     color: #a8d5c2;
-    border-color: #333333;
 }
 
-.card--destacada .card__lista li::before {
-    background-color: #a8d5c2;
+.plan-business .plan-card__precio span {
+    color: #888;
 }
 
-/* ── NOTA ── */
-.servicios__nota {
-    margin-top: 40px;
+/* Animación shimmer */
+@keyframes shimmer {
+    0%   { box-shadow: 0 0 0px #a8d5c200; }
+    50%  { box-shadow: 0 0 18px #a8d5c266; }
+    100% { box-shadow: 0 0 0px #a8d5c200; }
+}
+
+.plan-business.shimmer {
+    animation: shimmer 1s ease;
+}
+
+/* ── Lista de servicios ── */
+.servicios-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.servicios-contenido {
+    display: grid;
+    grid-template-columns: 500px 150px 150px;
+    align-items: stretch;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+    color: #333;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.servicios-contenido.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.plan-col {
+    border-left: 2px solid #a8d5c2;
     display: flex;
     align-items: center;
-    gap: 16px;
-    font-size: 15px;
-    color: #000000;
-    font-weight: 400;
+    justify-content: center;
+    width: 100%;
+    font-size: 13px;
 }
 
-.servicios__nota::before {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background-color: #a8d5c2;
-    flex-shrink: 0;
+/* Columna del plan destacado (negra) */
+.servicios-contenido .plan-col:last-child {
+    background: #f5f5f5;
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-    .servicios__header {
-        flex-direction: column;
-        align-items: flex-start;
+/* Fila de precio */
+.precio-row {
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: none;
+    padding: 16px 0;
+}
+
+.precio-col {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+}
+
+.precio-col.destacado {
+    color: #1a1a1a;
+    background: #a8d5c230;
+}
+
+.fa-check { color: #a8d5c2; }
+.fa-xmark { color: #e57373; }
+/* ── RESPONSIVE PLANES ── */
+@media (max-width: 768px) {
+
+    .planes {
+        grid-template-columns: 1fr 120px 120px;
     }
-    .servicios__grid {
-        grid-template-columns: 1fr;
+
+    .servicios-contenido {
+        grid-template-columns: 1fr 120px 120px;
+        font-size: 13px;
+    }
+
+    .plan-card__precio {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .planes {
+        grid-template-columns: 1fr 90px 90px;
+    }
+
+    .servicios-contenido {
+        grid-template-columns: 1fr 90px 90px;
+        font-size: 11px;
+    }
+
+    .plan-card__nombre {
+        font-size: 11px;
+    }
+
+    .plan-card__precio {
+        font-size: 11px;
+    }
+
+    .plan-card__badge {
+        font-size: 8px;
+        padding: 2px 6px;
+    }
+
+    .plan-col {
+        font-size: 11px;
+    }
+
+    .planes-section {
+        padding: 60px 4%;
     }
 }
