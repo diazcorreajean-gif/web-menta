@@ -85,9 +85,14 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(
 const esTactil = window.matchMedia('(hover: none)').matches;
 if (esTactil) document.documentElement.classList.add('no-cursor');
 
-cargarComponente('header', 'components/header.html', () => {
-    corregirRutas('header');
+const headerEl = document.getElementById('header');
+if (headerEl && headerEl.innerHTML.trim() === '') {
+    cargarComponente('header', 'components/header.html', () => {
+        corregirRutas('header');
+        initHamburguesa();
+    });
+} else {
     initHamburguesa();
-});
+}
 cargarComponente('footer', 'components/footer.html', () => corregirRutas('footer'));
 cargarComponente('whatsapp', 'components/whatsapp-btn.html');
