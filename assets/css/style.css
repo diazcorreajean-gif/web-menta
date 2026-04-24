@@ -45,3 +45,10 @@ body {
     from { transform: translate(0, 0) rotate(0deg); }
     to   { transform: translate(60px, 40px) rotate(10deg); }
 }
+
+@media (max-width: 768px) {
+    .orb {
+        filter: blur(40px);
+        animation: none;
+    }
+}
