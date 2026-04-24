@@ -88,6 +88,14 @@
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .proceso {
+        padding: 60px 5%;
+    }
+    .proceso__header {
+        margin-bottom: 40px;
+    }
+}
 @media (max-width: 900px) {
     .proceso__pasos {
         grid-template-columns: 1fr 1fr;

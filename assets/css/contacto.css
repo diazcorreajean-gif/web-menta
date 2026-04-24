@@ -68,3 +68,21 @@
     color: #aaaaaa;
     font-weight: 400;
 }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .contacto {
+        padding: 60px 5%;
+    }
+    .contacto__subtitulo {
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-whatsapp {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+}

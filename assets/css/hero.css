@@ -102,10 +102,29 @@
 }
 
 @media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+    }
     .hero-image {
         display: none;
     }
-    .hero-content h1{
-        font-size: 50px;
+    .hero-content h1 {
+        font-size: 44px;
+    }
+    .hero-content p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 36px;
+    }
+    .hero-btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .hero-btns a {
+        text-align: center;
     }
 }

@@ -81,6 +81,14 @@
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .diferencial {
+        padding: 60px 5%;
+    }
+    .diferencial__header {
+        margin-bottom: 40px;
+    }
+}
 @media (max-width: 900px) {
     .diferencial__grid {
         grid-template-columns: 1fr;
