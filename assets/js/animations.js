@@ -2,7 +2,7 @@
     ANIMATIONS.JS — MENTA
    ════════════════════════════════ */
 
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
     // ════════════════════════════════
     // 1. NAVBAR — cambia al hacer scroll
@@ -30,8 +30,8 @@
                 }
             });
         }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0,
+            rootMargin: '0px 0px 50px 0px'
         });
 
         revealEls.forEach(el => observer.observe(el));
@@ -42,62 +42,62 @@
     // 3. CURSOR PERSONALIZADO — solo en desktop
     // ════════════════════════════════
     // ════════════════════════════════
-// 3. CURSOR PERSONALIZADO — solo en desktop
-// ════════════════════════════════
-if (!document.documentElement.classList.contains('no-cursor')) {
+    // 3. CURSOR PERSONALIZADO — solo en desktop
+    // ════════════════════════════════
+    if (!document.documentElement.classList.contains('no-cursor')) {
 
-    const dot  = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.className  = 'cursor-dot';
-    ring.className = 'cursor-ring';
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
+        const dot = document.createElement('div');
+        const ring = document.createElement('div');
+        dot.className = 'cursor-dot';
+        ring.className = 'cursor-ring';
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
 
-    let mouseX = 0, mouseY = 0;
-    let ringX  = 0, ringY  = 0;
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
 
-    window.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        dot.style.transform = `translate3d(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%), 0)`;
-    });
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.transform = `translate3d(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%), 0)`;
+        });
 
-    function animateCursor() {
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-        ring.style.transform = `translate3d(calc(${ringX}px - 50%), calc(${ringY}px - 50%), 0)`;
-        requestAnimationFrame(animateCursor);
+        function animateCursor() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.transform = `translate3d(calc(${ringX}px - 50%), calc(${ringY}px - 50%), 0)`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
+        interactivos.forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+        });
+
+        // ── Cursor claro sobre elementos oscuros ──
+        const elementosOscuros = document.querySelectorAll('.plan-business, .menta-nav.scrolled, .footer, .diferencial, .faq, .numeros');
+        elementosOscuros.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                dot.classList.add('cursor-light');
+                ring.classList.add('cursor-light');
+            });
+            el.addEventListener('mouseleave', () => {
+                dot.classList.remove('cursor-light');
+                ring.classList.remove('cursor-light');
+            });
+        });
+
+        document.addEventListener('mouseleave', () => {
+            dot.style.opacity = '0';
+            ring.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            dot.style.opacity = '1';
+            ring.style.opacity = '1';
+        });
     }
-    animateCursor();
-
-    const interactivos = document.querySelectorAll('a, button, .card, .portafolio__card, .paso');
-    interactivos.forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-    });
-
-    // ── Cursor claro sobre elementos oscuros ──
-    const elementosOscuros = document.querySelectorAll('.plan-business, .menta-nav.scrolled, .footer, .diferencial, .faq, .numeros');
-    elementosOscuros.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            dot.classList.add('cursor-light');
-            ring.classList.add('cursor-light');
-        });
-        el.addEventListener('mouseleave', () => {
-            dot.classList.remove('cursor-light');
-            ring.classList.remove('cursor-light');
-        });
-    });
-
-    document.addEventListener('mouseleave', () => {
-        dot.style.opacity  = '0';
-        ring.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-        dot.style.opacity  = '1';
-        ring.style.opacity = '1';
-    });
-}
 
 
     // ════════════════════════════════
@@ -105,15 +105,15 @@ if (!document.documentElement.classList.contains('no-cursor')) {
     // ════════════════════════════════
     const heroImage = document.querySelector('.hero-image');
     const meshGradient = document.querySelector('.mesh-gradient');
-    
+
     window.addEventListener('scroll', () => {
         let scrollY = window.scrollY;
-        
+
         // Parallax Hero Image (se mueve más lento que el scroll)
         if (heroImage && scrollY < window.innerHeight) {
             heroImage.style.transform = `translate3d(0, ${scrollY * 0.15}px, 0)`;
         }
-        
+
         // Parallax Fondo Orbes
         if (meshGradient) {
             meshGradient.style.transform = `translate3d(0, ${-scrollY * 0.1}px, 0)`;
@@ -144,12 +144,12 @@ if (!document.documentElement.classList.contains('no-cursor')) {
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.plan-card').forEach((el, i) => {
-        el.style.transitionDelay = `${i * 150}ms`;
+        el.style.transitionDelay = `${i * 100}ms`;
         planesObserver.observe(el);
     });
 
     document.querySelectorAll('.servicios-contenido').forEach((el, i) => {
-        el.style.transitionDelay = `${i * 40}ms`;
+        el.style.transitionDelay = `${i * 20}ms`;
         planesObserver.observe(el);
     });
 

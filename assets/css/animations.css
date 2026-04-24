@@ -7,9 +7,9 @@
 :root {
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-    --duration-fast: 0.4s;
-    --duration-med: 0.7s;
-    --duration-slow: 1s;
+    --duration-fast: 0.3s;
+    --duration-med: 0.4s;
+    --duration-slow: 0.6s;
 }
 
 /* ════════════════════════════════
@@ -20,7 +20,7 @@
 }
 
 .menta-nav.scrolled {
-    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -32,31 +32,31 @@
 .hero-badge {
     opacity: 0;
     transform: translateY(16px);
-    animation: fadeUp var(--duration-med) var(--ease-out-expo) 0.1s forwards;
+    animation: fadeUp var(--duration-med) var(--ease-out-expo) 0s forwards;
 }
 
 .hero-content h1 {
     opacity: 0;
     transform: translateY(24px);
-    animation: fadeUp var(--duration-slow) var(--ease-out-expo) 0.25s forwards;
+    animation: fadeUp var(--duration-slow) var(--ease-out-expo) 0.1s forwards;
 }
 
 .hero-content p {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeUp var(--duration-med) var(--ease-out-expo) 0.45s forwards;
+    animation: fadeUp var(--duration-med) var(--ease-out-expo) 0.2s forwards;
 }
 
 .hero-btns {
     opacity: 0;
     transform: translateY(16px);
-    animation: fadeUp var(--duration-med) var(--ease-out-expo) 0.6s forwards;
+    animation: fadeUp var(--duration-med) var(--ease-out-expo) 0.3s forwards;
 }
 
 .hero-image {
     opacity: 0;
     transform: translateX(32px);
-    animation: fadeLeft var(--duration-slow) var(--ease-out-expo) 0.4s forwards;
+    animation: fadeLeft var(--duration-slow) var(--ease-out-expo) 0.2s forwards;
 }
 
 /* ════════════════════════════════
@@ -77,8 +77,13 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* ════════════════════════════════
@@ -89,7 +94,7 @@
     opacity: 0;
     transform: translateY(40px);
     transition: opacity var(--duration-med) var(--ease-out-expo),
-                transform var(--duration-med) var(--ease-out-expo);
+        transform var(--duration-med) var(--ease-out-expo);
 }
 
 .reveal.visible {
@@ -98,10 +103,21 @@
 }
 
 /* delays escalonados para grids */
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
 
 /* ════════════════════════════════
    BOTONES — micro animaciones
@@ -131,8 +147,8 @@
 /* ════════════════════════════════
    CARDS DE SERVICIOS
    ════════════════════════════════ */
-.card {
-    transition: background-color 0.3s ease, transform 0.3s var(--ease-out-quart);
+.card, .plan-card, .diferencial__item {
+    transition: background-color 0.3s ease, transform 0.3s var(--ease-out-quart), box-shadow 0.3s ease;
 }
 
 .card:hover, .plan-card:hover {
@@ -169,9 +185,9 @@
 }
 
 /* ── EFECTO DIBUJADO SVG (PROCESO) ── */
-.paso__icono path, 
-.paso__icono circle, 
-.paso__icono rect, 
+.paso__icono path,
+.paso__icono circle,
+.paso__icono rect,
 .paso__icono line {
     stroke-dasharray: 200;
     stroke-dashoffset: 200;
@@ -208,15 +224,28 @@
 }
 
 @keyframes pulse {
-    0%   { transform: scale(1);   opacity: 0.4; }
-    70%  { transform: scale(1.12); opacity: 0; }
-    100% { transform: scale(1.12); opacity: 0; }
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+
+    70% {
+        transform: scale(1.12);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.12);
+        opacity: 0;
+    }
 }
 
 /* ════════════════════════════════
    CURSOR PERSONALIZADO
    ════════════════════════════════ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     cursor: none;
 }
 
@@ -226,7 +255,8 @@
     background: #1a1a1a;
     border-radius: 50%;
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     pointer-events: none;
     z-index: 9999;
     will-change: transform;
@@ -236,16 +266,17 @@
 .cursor-ring {
     width: 36px;
     height: 36px;
-    border: 1.5px solid rgba(26,26,26,0.4);
+    border: 1.5px solid rgba(26, 26, 26, 0.4);
     border-radius: 50%;
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     pointer-events: none;
     z-index: 9998;
     will-change: transform, width, height, border-color;
     transition: width 0.3s var(--ease-out-expo),
-                height 0.3s var(--ease-out-expo),
-                border-color 0.3s ease;
+        height 0.3s var(--ease-out-expo),
+        border-color 0.3s ease;
 }
 
 .cursor-ring.hover {
@@ -253,6 +284,7 @@
     height: 56px;
     border-color: #a8d5c2;
 }
+
 .cursor-dot.cursor-light {
     background-color: #00ff95;
 }
@@ -260,13 +292,16 @@
 .cursor-ring.cursor-light {
     border-color: #ffffff;
 }
+
 .no-cursor * {
     cursor: auto !important;
 }
+
 .no-cursor .cursor-dot,
 .no-cursor .cursor-ring {
     display: none !important;
 }
+
 /* ── LÍNEA SEPARADORA ANIMADA ── */
 .servicios__nota::before,
 .diferencial__tag::after {
@@ -275,7 +310,10 @@
 
 /* ── REDUCE MOVIMIENTO si el usuario lo prefiere ── */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
     }
