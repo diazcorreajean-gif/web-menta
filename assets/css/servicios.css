@@ -41,7 +41,7 @@
 /* ── Grid principal ── */
 .planes {
     display: grid;
-    grid-template-columns: 500px 150px 150px;
+    grid-template-columns: 350px 150px 150px 150px;
     align-items: end;
 }
 
@@ -121,6 +121,11 @@
     color: #888;
 }
 
+/* Mejora tu Web */
+.plan-mejora {
+    background: #fafafa;
+}
+
 /* Animación shimmer */
 @keyframes shimmer {
     0%   { box-shadow: 0 0 0px #a8d5c200; }
@@ -141,7 +146,7 @@
 
 .servicios-contenido {
     display: grid;
-    grid-template-columns: 500px 150px 150px;
+    grid-template-columns: 350px 150px 150px 150px;
     align-items: stretch;
     padding: 10px 0;
     border-bottom: 1px solid #eee;
@@ -167,7 +172,7 @@
 }
 
 /* Columna del plan destacado (negra) */
-.servicios-contenido .plan-col:last-child {
+.servicios-contenido .plan-col:nth-of-type(2) {
     background: #f5f5f5;
 }
 
@@ -192,15 +197,24 @@
 
 .fa-check { color: #a8d5c2; }
 .fa-xmark { color: #e57373; }
+/* ── Wrapper para scroll ── */
+.planes-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
 /* ── RESPONSIVE PLANES ── */
 @media (max-width: 768px) {
 
     .planes {
-        grid-template-columns: 1fr 140px 140px;
+        grid-template-columns: 250px 140px 140px 140px;
+        min-width: 670px;
     }
 
     .servicios-contenido {
-        grid-template-columns: 1fr 140px 140px;
+        grid-template-columns: 250px 140px 140px 140px;
+        min-width: 670px;
         font-size: 13px;
     }
 
@@ -212,11 +226,13 @@
 @media (max-width: 480px) {
 
     .planes {
-        grid-template-columns: 1fr 110px 110px;
+        grid-template-columns: 150px 110px 110px 110px;
+        min-width: 480px;
     }
 
     .servicios-contenido {
-        grid-template-columns: 1fr 110px 110px;
+        grid-template-columns: 150px 110px 110px 110px;
+        min-width: 480px;
         font-size: 11px;
     }
 

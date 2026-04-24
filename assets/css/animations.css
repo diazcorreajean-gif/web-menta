@@ -21,7 +21,9 @@
 
 .menta-nav.scrolled {
     box-shadow: 0 2px 24px rgba(0,0,0,0.08);
-    background-color: rgba(255,255,255,0.98);
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 /* ════════════════════════════════
@@ -133,12 +135,14 @@
     transition: background-color 0.3s ease, transform 0.3s var(--ease-out-quart);
 }
 
-.card:hover {
-    transform: translateY(-4px);
+.card:hover, .plan-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(168, 213, 194, 0.2);
 }
 
 .card--destacada:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(168, 213, 194, 0.25);
 }
 
 /* ════════════════════════════════
@@ -162,6 +166,23 @@
 .paso:hover .paso__nombre {
     color: #a8d5c2;
     transition: color 0.3s ease;
+}
+
+/* ── EFECTO DIBUJADO SVG (PROCESO) ── */
+.paso__icono path, 
+.paso__icono circle, 
+.paso__icono rect, 
+.paso__icono line {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    transition: stroke-dashoffset 1.5s var(--ease-out-expo) 0.3s;
+}
+
+.reveal.visible .paso__icono path,
+.reveal.visible .paso__icono circle,
+.reveal.visible .paso__icono rect,
+.reveal.visible .paso__icono line {
+    stroke-dashoffset: 0;
 }
 
 /* ════════════════════════════════
@@ -208,8 +229,8 @@
     top: 0; left: 0;
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, background-color 0.2s ease;
+    will-change: transform;
+    transition: background-color 0.2s ease;
 }
 
 .cursor-ring {
@@ -221,7 +242,7 @@
     top: 0; left: 0;
     pointer-events: none;
     z-index: 9998;
-    transform: translate(-50%, -50%);
+    will-change: transform, width, height, border-color;
     transition: width 0.3s var(--ease-out-expo),
                 height 0.3s var(--ease-out-expo),
                 border-color 0.3s ease;

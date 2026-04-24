@@ -59,15 +59,13 @@ if (!document.documentElement.classList.contains('no-cursor')) {
     window.addEventListener('mousemove', e => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        dot.style.left = mouseX + 'px';
-        dot.style.top  = mouseY + 'px';
+        dot.style.transform = `translate3d(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%), 0)`;
     });
 
     function animateCursor() {
         ringX += (mouseX - ringX) * 0.12;
         ringY += (mouseY - ringY) * 0.12;
-        ring.style.left = ringX + 'px';
-        ring.style.top  = ringY + 'px';
+        ring.style.transform = `translate3d(calc(${ringX}px - 50%), calc(${ringY}px - 50%), 0)`;
         requestAnimationFrame(animateCursor);
     }
     animateCursor();
@@ -103,8 +101,25 @@ if (!document.documentElement.classList.contains('no-cursor')) {
 
 
     // ════════════════════════════════
-    // 4. SMOOTH SCROLL
+    // 4. SMOOTH SCROLL Y PARALLAX
     // ════════════════════════════════
+    const heroImage = document.querySelector('.hero-image');
+    const meshGradient = document.querySelector('.mesh-gradient');
+    
+    window.addEventListener('scroll', () => {
+        let scrollY = window.scrollY;
+        
+        // Parallax Hero Image (se mueve más lento que el scroll)
+        if (heroImage && scrollY < window.innerHeight) {
+            heroImage.style.transform = `translate3d(0, ${scrollY * 0.15}px, 0)`;
+        }
+        
+        // Parallax Fondo Orbes
+        if (meshGradient) {
+            meshGradient.style.transform = `translate3d(0, ${-scrollY * 0.1}px, 0)`;
+        }
+    }, { passive: true });
+
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', e => {
             const target = document.querySelector(link.getAttribute('href'));

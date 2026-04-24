@@ -25,6 +25,7 @@ body {
     filter: blur(120px);
     opacity: 0.4;
     animation: float 20s infinite alternate;
+    will-change: transform;
 }
 
 .orb-1 {
